@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ServiceDesk Trainer</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Reitan ServiceDesk Trainer</h1>
+      <button id="restartBtn">Start på nytt</button>
+    </header>
+
+    <div class="layout">
+      <aside class="sidebar">
+        <h2>Henvendelser</h2>
+        <div id="scenarioList"></div>
+      </aside>
+
+      <main class="main">
+        <div class="tabs">
+          <button class="tab active" data-tab="simulator">Simulator</button>
+          <button class="tab" data-tab="lookup">GTIN-søk</button>
+          <button class="tab" data-tab="tickets">Saker</button>
+        </div>
+
+        <section id="simulator" class="tab-content active">
+          <h2 id="scenarioTitle">Velg en henvendelse</h2>
+          <p id="scenarioMeta"></p>
+
+          <div id="chatBox" class="chat-box"></div>
+          <div id="stepBox" class="step-box"></div>
+        </section>
+
+        <section id="lookup" class="tab-content">
+          <h2>GTIN-søk</h2>
+          <input type="text" id="gtinInput" placeholder="Skriv inn GTIN" />
+          <button id="gtinBtn">Søk</button>
+          <div id="gtinResult"></div>
+        </section>
+
+        <section id="tickets" class="tab-content">
+          <h2>Opprettede saker</h2>
+          <div id="ticketList"></div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <div id="ticketModal" class="modal hidden">
+    <div class="modal-content">
+      <h3>Opprett sak</h3>
+
+      <label>Avdeling</label>
+      <select id="ticketDepartment">
+        <option value="">Velg avdeling</option>
+        <option value="Kategori & marked">Kategori & marked</option>
+        <option value="Brukeradministrasjon">Brukeradministrasjon</option>
+        <option value="Drift">Drift</option>
+        <option value="Teknisk support">Teknisk support</option>
+      </select>
+
+      <label>Butikk</label>
+      <input id="ticketStore" type="text" />
+
+      <label>Tittel</label>
+      <input id="ticketTitle" type="text" />
+
+      <label>Referanse</label>
+      <input id="ticketReference" type="text" />
+
+      <label>Beskrivelse</label>
+      <textarea id="ticketDescription"></textarea>
+
+      <div class="modal-buttons">
+        <button id="cancelTicketBtn">Avbryt</button>
+        <button id="saveTicketBtn">Opprett</button>
+      </div>
+
+      <p id="ticketError" class="error-text"></p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
